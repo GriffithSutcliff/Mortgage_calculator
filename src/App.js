@@ -11,6 +11,7 @@ function App() {
   const [mortgageTerm, setMortgageTerm] = useState(0)
   const [mortgageRate, setMortgageRate] = useState(0)
   const [checked, setChecked] = useState(true);
+  const [isError, setIsError] = useState(false); // Для отслеживания ошибки
 
   function setRepayment(){
     setChecked('Rep')
@@ -25,15 +26,37 @@ function App() {
     const monthlyRate = (mortgageRate / 100) / 12;
     // Общее количество платежей (месяцев)
     const totalPayments = mortgageTerm * 12;
+    
+    // Проверка на валидность введенных данных
+    if (isNaN(mortgageAmount) || isNaN(mortgageTerm) || isNaN(mortgageRate) || mortgageAmount <= 0 || mortgageTerm <= 0 || mortgageRate <= 0) {
+      setIsError(true); // Включаем ошибку
+      setMortgageMounth(0); // Сбрасываем старые значения
+      setMortgagePaid(0);
+      setMortgageOverPayment(0);
+      return;
+    }
+
+    setIsError(false); // Сброс ошибки при корректных значениях
+
     // Рассчитываем ежемесячный платеж по формуле аннуитетного платежа
     const monthlyPayment = mortgageAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / (Math.pow(1 + monthlyRate, totalPayments) - 1);
+
     // Общая сумма всех выплат
     const totalAmountPaid = monthlyPayment * totalPayments;
     const overpayment = totalAmountPaid - mortgageAmount;
-    setMortgageMounth(monthlyPayment.toFixed(2))
-    setMortgagePaid(totalAmountPaid.toFixed(2))
-    setMortgageOverPayment(overpayment.toFixed(2))
-    console.log(monthlyPayment)
+
+    // Проверяем на NaN результат
+    if (isNaN(monthlyPayment) || isNaN(totalAmountPaid) || isNaN(overpayment)) {
+      setIsError(true); // Включаем ошибку, если результат NaN
+      setMortgageMounth(0);
+      setMortgagePaid(0);
+      setMortgageOverPayment(0);
+    } else {
+      setIsError(false); // Если результат корректный, отключаем ошибку
+      setMortgageMounth(monthlyPayment.toFixed(2));
+      setMortgagePaid(totalAmountPaid.toFixed(2));
+      setMortgageOverPayment(overpayment.toFixed(2));
+    }
   }
 
   return (
@@ -86,21 +109,27 @@ function App() {
         </div>
       </div>
       <div className="results">
-      {mortgageMounth === 0 ? (
+      {isError ? (
+        <div className="error-message">
+          <p>Упс. Кажется вы допустили ошибку</p>
+        </div>
+      ) : mortgageMounth === 0 ? (
         <div className="empty">
         <img src={def} />
         </div>
       ) : (
-        <div className="result">
+        <div className="no-empty">
           <div className="green-line" />
-          <div className="mounth-payment">
-            <p>Your monthly repayments</p>
-            <p>{mortgageMounth}</p>
-          </div>
-          <div className="line" />
-          <div className="full-repay">
-            <p>Total you`ll repay over the term</p>
-            <p>{mortgagePaid}</p>
+          <div className="result">
+            <div className="mounth-payment">
+              <p>Your monthly repayments</p>
+              <p>£ {mortgageMounth}</p>
+            </div>
+            <div className="line" />
+            <div className="full-repay">
+              <p>Total you'll repay over the term</p>
+              <p>£ {mortgagePaid}</p>
+            </div>
           </div>
         </div>
       )}

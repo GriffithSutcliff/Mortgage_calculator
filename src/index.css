@@ -4,14 +4,18 @@
   font-weight: normal;  /* Обычный вес */
   font-style: normal;   /* Обычный стиль */
 }
-
 body{
   cursor: default;
   font-family: Plus;
-  background-color: rgb(142, 178, 255);
+  background-color: rgb(225,244,253);
+  display: flex;
+  justify-content: center;
 }
 .app{
+  margin-top: 25px;
   display: flex;
+  width: 1400px;
+  background-color: white;
 }
 .calculator{
   width: 700px;
@@ -23,6 +27,9 @@ body{
 }
 .calculator *{
   margin-bottom: 20px;
+}
+.calculator p{
+  color: rgb(18,42,56);
 }
 .amount{
   width: 600px;
@@ -40,6 +47,9 @@ body{
   outline: none;
   border-radius: 0px 5px 5px 0px;
   border-width: 1.5px 1.5px 1.5px 0px;
+  color: rgb(49,68,79);
+  padding: 10px;
+  font-size: 20px;
 }
 .inputs .vallet{
   width: 50px;
@@ -50,7 +60,8 @@ body{
   border-style: solid;
   border-radius: 5px 0px 0px 5px;
   border-width: 1.5px 0px 1.5px 1.5px;
-  background-color: rgb(142, 178, 255);
+  color: rgb(94,118,130);
+  background-color: rgb(225,244,253);
 }
 .header{
   width: 600px;
@@ -61,6 +72,15 @@ body{
 .header p{
   cursor: pointer;
   width: unset;
+}
+.header p:last-child{
+  text-decoration: underline;
+  color: rgb(94,118,130);
+}
+.error-message p{
+  font-size: 40px;
+  color: white;
+  text-align: center;
 }
 .other{
   width: 600px;
@@ -76,10 +96,13 @@ body{
 .term input, .rate input{
   cursor: pointer;
   outline: none;
-  width: 225px;
-  height: 50px;
+  max-width: 225px;
+  max-height: 50px;
   border-radius: 5px 0px 0px 5px;
   border-width: 1.5px 0px 1.5px 1.5px;
+  color: rgb(49,68,79);
+  padding: 10px;
+  font-size: 20px;
 }
 .right-thing{
   width: 50px;
@@ -89,7 +112,8 @@ body{
   border-style: solid;
   border-radius: 0px 5px 5px 0px;
   border-width: 1.5px 1.5px 1.5px 0px;
-  background-color: rgb(142, 178, 255);
+  color: rgb(94,118,130);
+  background-color: rgb(225,244,253);
 }
 .check{
   cursor: pointer;
@@ -125,15 +149,104 @@ body{
 }
 .results{
   width: 700px;
-  height: 800px;
-  display: flex;
-  flex-direction: column;
-  background-color: blue;
-}
-.empty{
-  width: 700px;
-  height: 800px;
+  height: 800px; 
   display: flex;
   justify-content: center;
+  align-items: center; 
+  flex-direction: column;
+  background-color: rgb(19,48,64);
+  border-radius: 0px 0px 0px 200px; 
+}
+.empty{
+  width: 700px; 
+  height: 800px;
+  display: flex;
+  justify-content: center;    
   align-items: center;
+}
+.green-line{
+  width: 580px;
+  height: 10px;
+  border-radius: 10px 10px 0px 0px;
+  background-color: rgb(205,215,94);
+}
+.no-empty{
+  display: flex;
+  flex-direction: column;
+}
+.result{
+  width: 500px;
+  padding: 40px;
+  background-color: rgb(14,36,49);
+  border-radius: 0px 0px 10px 10px;
+}
+.line{
+  width: 400px;
+  height: 1px;
+  background-color: gray;
+}
+.mounth-payment, .full-repay{
+  color: gray;
+  font-size: 30px;
+}
+.mounth-payment p:last-child{
+  color: rgb(205,215,94);
+  font-size: 45px;
+}
+.full-repay p:last-child{
+  color: white;
+}
+@media (max-width:490px){
+  .app{
+    margin-top: unset;
+    box-sizing: border-box;
+    width: 490px;
+    height: unset;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  body{
+    background-color: unset;
+    margin: 0;
+  }
+  body * {
+    padding: 0;
+    margin: 0;
+  }
+  .header{
+    flex-direction: column;
+  }
+  .other{
+    flex-direction: column;
+  }
+  .calculator{
+    padding: 35px;
+    height: unset;
+  }
+  .calculator, .check, .header, .amount, .other, form, .button, .empty{
+    width: 420px;
+  }
+  .results{
+    width: 490px;
+  }
+  .other-inputs{
+    width: 420px;
+  }
+  .other-inputs input{
+    max-width: unset;
+    width: 420px;
+  }
+  .results{
+    border-radius: unset;
+  }
+  .result *{
+    width: 420px;
+  }
+  .result {
+    max-width: 420px;
+    padding: 10px;
+  }
+  .green-line{
+    width: 440px;
+  }
 }
