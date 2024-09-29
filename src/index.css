@@ -1,0 +1,139 @@
+@font-face {
+  font-family: 'Plus'; /* Название шрифта */
+  src: url('./assets/fonts/PlusJakartaSans-VariableFont_wght.ttf') format('truetype'); /* Основной формат */
+  font-weight: normal;  /* Обычный вес */
+  font-style: normal;   /* Обычный стиль */
+}
+
+body{
+  cursor: default;
+  font-family: Plus;
+  background-color: rgb(142, 178, 255);
+}
+.app{
+  display: flex;
+}
+.calculator{
+  width: 700px;
+  height: 800px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+}
+.calculator *{
+  margin-bottom: 20px;
+}
+.amount{
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+.inputs{
+  display: flex;
+  flex-direction: row;
+}
+.amount input{
+  cursor: pointer;
+  width: 600px;
+  outline: none;
+  border-radius: 0px 5px 5px 0px;
+  border-width: 1.5px 1.5px 1.5px 0px;
+}
+.inputs .vallet{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  border-radius: 5px 0px 0px 5px;
+  border-width: 1.5px 0px 1.5px 1.5px;
+  background-color: rgb(142, 178, 255);
+}
+.header{
+  width: 600px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header p{
+  cursor: pointer;
+  width: unset;
+}
+.other{
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+}
+.term, .rate{
+  width: 275px;
+}
+.other-inputs{
+  display: flex;
+}
+.term input, .rate input{
+  cursor: pointer;
+  outline: none;
+  width: 225px;
+  height: 50px;
+  border-radius: 5px 0px 0px 5px;
+  border-width: 1.5px 0px 1.5px 1.5px;
+}
+.right-thing{
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  border-radius: 0px 5px 5px 0px;
+  border-width: 1.5px 1.5px 1.5px 0px;
+  background-color: rgb(142, 178, 255);
+}
+.check{
+  cursor: pointer;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  border: solid 1.5px;
+}
+.check input{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0px 0px 0px 15px;
+}
+.check p{
+  margin-left: 20px;
+}
+.button{
+  cursor: pointer;
+  width: 500px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background-color: yellow;
+}
+.button img{
+  padding: 0;
+  margin: 0px 15px 0px 0px;
+}
+.results{
+  width: 700px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  background-color: blue;
+}
+.empty{
+  width: 700px;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
